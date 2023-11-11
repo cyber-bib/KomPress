@@ -33,4 +33,11 @@ following form
 
 $$<?php include 'latex/equations/st-map.tex' ?>$$
 
+October 10, 2023 </br>
+Since maximizing the compression of the volumetric object lies at the surface
+the convolution should be done over the translation vectors not the scaling vectors.
+This is because the translation vectors are at the surface rendering the solution to be
+in a quadratic subspace instead of a quibic subspace.
+
+October 27, 2023 </br>
 

@@ -1,0 +1,97 @@
+@property --floor {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: false;
+}
+:root {
+  /* --pg-width: min(100vw, calc(8.5/11.0*100vh));
+  --pg-height: min(100vh, calc(11.0/8.5*100vw));
+  --pg-hmargin: calc(1.0/8.5*var(--pg-width));
+  --pg-vmargin: calc(1.0/11.0*var(--pg-height)); */
+
+  --fnt-sz-val: calc(10 / 72);
+
+  --pg-width-val: 8.5;
+  --pg-height-val: 11.0;
+  --pg-hmargin-val: 1.0;
+  --pg-vmargin-val: 1.0;
+  --content-width-val: calc(var(--pg-width-val) - 2*var(--pg-hmargin-val));
+  --content-height-val: calc(var(--pg-height-val) - 2*var(--pg-vmargin-val));
+
+  --ln-h-val: var(--fnt-sz-val);
+  --floor: calc(var(--content-height-val) / var(--ln-h-val) - 0.5);
+  --ln-s-val: calc(var(--floor) * var(--ln-h-val));
+
+
+  /* Conversion to inches */
+  --unit: 1in;
+
+  --fnt-sz: calc(var(--fnt-sz-val) * var(--unit));
+
+  --pg-width: calc(var(--pg-width-val) * var(--unit));
+  --pg-height: calc(var(--pg-height-val) * var(--unit));
+  --pg-hmargin: calc(var(--pg-hmargin-val) * var(--unit));
+  --pg-vmargin: calc(var(--pg-vmargin-val) * var(--unit));
+  --content-width:  calc(var(--content-width-val) * var(--unit));
+  --content-height: calc(var(--content-height-val) * var(--unit));
+
+  --ln-h: calc(var(--ln-h-val) * var(--unit));
+  --ln-s: calc(var(--ln-s-val) * var(--unit));
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-size: var(--fnt-sz);
+  line-height: var(--ln-h);
+}
+ol, ul {
+  list-style-position: inside;
+}
+ol, ul, li, li > * {
+  margin-left: 1rem;
+}
+ol {
+  list-style-type: decimal;
+}
+ol > li > ol {
+  list-style-type: lower-alpha;
+}
+ol > li > ol > li > ol {
+  list-style-type: lower-roman;
+}
+p, li {
+  padding-top: 0.2rem;
+  padding-bottom: 0.1rem;
+}
+p {
+  height: var(--ln-s);
+  overflow: hidden;
+}
+
+section.doc-pg {
+  margin: auto;
+}
+section.doc-pg {
+  width: var(--pg-width);
+  height: var(--pg-height);
+}
+header.doc-pg, footer.doc-pg {
+  display: block;
+  width: auto;
+  height: var(--pg-hmargin);
+  clear: both;
+}
+aside.doc-pg {
+  display: block;
+  float: left;
+  width: var(--pg-hmargin);
+  height: calc(var(--pg-height) - 2*var(--pg-vmargin));
+}
+article.doc-pg {
+  display: block;
+  background-color: azure;
+  float: left;
+  width: var(--content-width);
+  height: var(--content-height);
+  overflow: hidden;
+}
